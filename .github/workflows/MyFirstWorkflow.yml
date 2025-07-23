@@ -5,6 +5,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+
 jobs:
   first_job:
     name: Moje pierwsze zadanie
@@ -15,5 +16,5 @@ jobs:
         shell: bash
       - name: Checkout
         uses: actions/checkout@v4.2.2
-        run: tree
+      - run: tree
         
