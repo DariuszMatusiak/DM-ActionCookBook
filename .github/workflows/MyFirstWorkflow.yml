@@ -1,4 +1,4 @@
-# my first workflow
+# My first workflow
 name: My-First-Workflow
 on:
   push:
@@ -19,4 +19,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
       - run: tree
-        
+      
+  Test:
+    runs-on: ubuntu-latest
+    environment: Test
+    needs: first_job
+    steps:
+      - name: Pozdrowienia
+        run: |
+            echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.actor }}."
+            sec=$(echo ${{ secrets.DMsecret01 }} | sed 's/./& /g')
+            echo "My pass is ${{ secrets.DMsecret01 }}."
+
+  Production:
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: https://writeabout.net
+    needs: [Test]
