@@ -13,8 +13,8 @@ jobs:
     steps:
       - name: Pozdrowienia
         run: |
-            echo "Hello ${{vars.WHO_TO_GREET}} from ${{github.actor}}."
-            echo "My pass is #{{secrets.DMsecret01}}."
+            echo "Hello ${{ vars.WHO_TO_GREET }} from ${{ github.actor }}."
+            echo "My pass is ${{ secrets.DMsecret01 }}."
         shell: bash
       - name: Checkout
         uses: actions/checkout@v4.2.2
